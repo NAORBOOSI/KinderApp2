@@ -1,18 +1,46 @@
 package com.example.MyWebApp.controler;
 
-public class Parents extends Person{
-	
-	
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity(name = "Parents")
+public class Parents extends Person {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
+	private Long id;
+
+	// @Column(name = "fathername")
 	private String fathername;
-	private String mathername;
-	private String lastname;
 	
-	public Parents(String sex, String fathername, String mathername, String lastname) {
-		super(sex);
-		this.fathername = fathername;
-		this.mathername = mathername;
-		this.lastname = lastname;
+	private String fatherId;
+
+	public String getFatherId() {
+		return fatherId;
 	}
+
+	public void setFatherId(String fatherId) {
+		this.fatherId = fatherId;
+	}
+
+	// @Column(name = "mathername")
+	private String mathername;
+
+	// @Column(name = "lastname")
+	private String lastname;
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<Child> children;
+
+ 
 
 	public String getFathername() {
 		return fathername;
@@ -37,6 +65,16 @@ public class Parents extends Person{
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
+
+	public List<Child> getChildren() {
+		return children;
+	}
+
+	public void setChildren(List<Child> children) {
+		this.children = children;
+	}
+
 	
+
 	
 }

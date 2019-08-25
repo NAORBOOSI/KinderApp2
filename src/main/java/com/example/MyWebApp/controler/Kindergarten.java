@@ -1,23 +1,39 @@
 package com.example.MyWebApp.controler;
 
-public class Kindergarten extends Child  {
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+//(name = "Kindergarten")
+@Entity
+public class Kindergarten   {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+   private Long id;
 	
-	public String kgarten;
-
+	public String nameKinder;
+	
 	public Kindergarten(String sex, String fathername, String mathername, String lastname,
-			String chfirstname, String chlastname, double age, String kgarten) {
-		super(sex, fathername, mathername, lastname, chfirstname, chlastname, age);
-		this.kgarten = kgarten;
+			String chfirstname, String chlastname,int childId, double age, String nameKinder) {
+		super();
+		this.nameKinder = nameKinder;
 	}
 
-	public String getKgarten() {
-		return kgarten;
+	public String getnameKinder() {
+		return nameKinder;
 	}
 
-	public void setKgarten(String kgarten) {
-		this.kgarten = kgarten;
+	public void setnameKinder(String nameKinder) {
+		this.nameKinder = nameKinder;
 	}
-
+//	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	//private List<Kindergarten> Kinder;
 	
 	
 

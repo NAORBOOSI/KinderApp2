@@ -1,28 +1,37 @@
 package com.example.MyWebApp.controler;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity(name="children") 
-public class Child extends Parents {
+public class Child extends Person   {
+	
+	
+
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
+	
+	@Column(name = "chfirstname")
 	private String chfirstname;
+	
+	@Column(name = "chlastname")
 	private String chlastname;
+	
+	@Column(name = "childId")
+	private int childId;
+	
 	private double age;
 	
-	public Child(String sex, String fathername, String mathername, String lastname, String chfirstname,
-			String chlastname, double age) {
-		super(sex, fathername, mathername, lastname);
-		this.chfirstname = chfirstname;
-		this.chlastname = chlastname;
-		this.age = age;
-	}
+  
+	
 
+	//@ManyToOne()
+	//@JoinColumn(name="name child")
 	public String getChfirstname() {
 		return chfirstname;
 	}
@@ -39,6 +48,14 @@ public class Child extends Parents {
 		this.chlastname = chlastname;
 	}
 
+	public int getChildId() {
+		return childId;
+	}
+
+	public void setChildId(int childId) {
+		this.childId = childId;
+	}
+
 	public double getAge() {
 		return age;
 	}
@@ -47,6 +64,11 @@ public class Child extends Parents {
 		this.age = age;
 	}
 
-	
+	public void delete(int id2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 	
 }

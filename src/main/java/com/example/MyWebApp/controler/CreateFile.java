@@ -7,9 +7,12 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class CreateFile {
 
-	public static void WriteToFile(String s, File f) throws IOException {
+	public  void WriteToFile(String s, File f) throws IOException {
 
 		FileWriter fwriter = new FileWriter("C:\\Temp\\text.txt", true);
 		PrintWriter outPutFile = new PrintWriter(fwriter);
@@ -24,7 +27,7 @@ public class CreateFile {
 		fwriter.close();
 	}
 
-	public static void AppendToFile(String string, Parents parentType) {
+	public  void appendToFile(String string, Person parentType) {
 		try {
 			File f = new File("C:\\Temp\\text.txt");
 
@@ -33,5 +36,16 @@ public class CreateFile {
 			// TODO: handle exception
 		}
 
+	}
+
+	public void appendToFile(String string, Kindergarten kinder) {
+		// TODO Auto-generated method stub
+		try {
+			File f = new File("C:\\Temp\\text.txt");
+
+			WriteToFile(string, f);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 }
